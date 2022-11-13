@@ -1,7 +1,10 @@
 import Input from "../pages/component/input";
 import { useState } from "react";
 import Joi from "joi-browser";
+import axios from "axios";
 import formForAll from "../component/formForAll"
+
+//import all from  '../pages/userManagment/loginform'
 const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
   console.log(registration);
   
@@ -11,7 +14,7 @@ const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
 
   // // validation data
   const signUp3 = {
-    role: registration.email ,
+    role: registration.role ,
   };
 
   // handle Error
@@ -52,26 +55,54 @@ const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
     // setErrors({ ...errors, errors });
   };
 
-  const thirtNextStep = () => {
-    const errors = validateLogin();
-    setErrors({ ...errors, errors: errors || {} });
-    if (errors) return;
+  // const thirtNextStep = () => {
+  //   const errors = validateLogin();
+  //   setErrors({ ...errors, errors: errors || {} });
+  //   if (errors) return;
 
-    console.log("data is working");
-    nextStep();
-  };
+
+  //   console.log("data is working");
+   
+  // };
 
   const handlePrevStep = () => {
     prevStep();
   };
 
-  return (
+  const register = async () =>{
+    // const { firstName,lastName,email,password,role} = registration
+    const formData = registration;
+    delete formData.step;
+    // if(firstName && email && password && role){
+      try{
+    axios.post("http://localhost:3030/api/v1/Register/reg", formData)
+    .then( res=>
+        // console.log("register done")
+      {
+        const notify = () => toast("Wow so easy!");
+        return notify
+      }
+      );
+    // }
+    // else {
+    //   console.log("register fail");
+    // }
+      }
+      catch{
 
-   <div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
+    console.log("hi");
+      }
+  }
+
+ 
+  return (
+<div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
     <div class="bg-white py-6 px-10 sm:max-w-md w-full ">
         <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
             Registration Form 
         </div>
+        <div class="">
+            <div>
       <form
         onSubmit={(e) => e.preventDefault()}
         className="flex flex-col items-center justify-center shadow-md shadow-slate-300 w-[400px] h-[450px] border-t-4 border-sky-300"
@@ -93,11 +124,13 @@ const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
             log
           </button>
 
-          <button  onClick={thirtNextStep} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button  onClick={register} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Button
 </button>
         </div>
       </form>
+    </div>
+    </div>
     </div>
     </div>
   );

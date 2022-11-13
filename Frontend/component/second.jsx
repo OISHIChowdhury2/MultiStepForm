@@ -5,11 +5,11 @@ import formForAll from "../component/formForAll"
 
 const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
 
-   console.log(registration);
+
 
   
    const schema = {
-    email: Joi.string().required().email({ minDomainAtoms: 2 }).label("Username"),                                      
+    email: Joi.string().required().email().label("Username"),                                      
     password: Joi.string().required().min(4).label("Password"),
   };
 
@@ -93,7 +93,7 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
         />
 
    <Input
-          type="text"
+          type="password"
           onChange={handleChange}
           value={registration.password}
           placeholder="enter your password"

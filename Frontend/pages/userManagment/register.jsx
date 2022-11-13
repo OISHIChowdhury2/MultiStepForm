@@ -2,8 +2,9 @@ import { useState } from "react";
 import FirstStep from "../../component/first";
 import SecondStep from "../../component/second";
 import ThirtStep from "../../component/thirt";
+
 const signup = () => {
-  const [registration, setRegistration,secondRegistration,setScondRegistration] = useState({
+  const [registration, setRegistration] = useState({
     step: 1,
     firstName: "",
     lastName: "",
@@ -18,10 +19,6 @@ const signup = () => {
     
   };
 
-  const secondNextStep =()=>{
-    let newStep2 = secondRegistration.step + 1;
-    setScondRegistration({ ...secondRegistration, step: newStep2 });
-  }
 
   const handlePrevStep = () => {
     let prevStep = registration.step - 1;
@@ -47,8 +44,6 @@ const signup = () => {
           setRegistration={setRegistration}
           registration={registration}
 
-          setScondRegistration={setScondRegistration}
-          secondRegistration={secondRegistration}
 
         />
       );
@@ -61,9 +56,7 @@ const signup = () => {
           setRegistration={setRegistration}
           registration={registration}
 
-            nextStep2={secondNextStep}
-            setScondRegistration={setScondRegistration}
-            secondRegistration={secondRegistration}
+         
   
           />
         );

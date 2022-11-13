@@ -34,8 +34,8 @@ router.get(
 
 router.post(
   '/reg',
-  [validates(RegisterValidtions)],
   wrap(async (req: Request, res: Response) => {
+    console.log(req.body)
     const registerService: RegisterService = Container.get(RegisterService);
     const register: Register = await registerService.create({
       ...req.body,

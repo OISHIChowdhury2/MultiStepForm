@@ -1,9 +1,7 @@
 import Joi from "joi-browser";
 import { useState } from "react";
-// import useForm from "../form/useForm";
 import formForAll from "../component/formForAll"
 import Input from "../pages/component/input";
-
 
 const FirstStep = ({ nextStep, setRegistration, registration }) => {
   // schema for validation
