@@ -2,6 +2,7 @@ import { useState } from "react";
 import FirstStep from "../../component/first";
 import SecondStep from "../../component/second";
 import ThirtStep from "../../component/third";
+import loginform from "./loginform"
 
 const signup = () => {
   const [registration, setRegistration] = useState({
@@ -63,12 +64,9 @@ const signup = () => {
 
         case 4:
           return (
-            <ThirtStep
-  
-            
-  
-           
-    
+            <loginform
+            values={registration} 
+       
             />
           );
   }
