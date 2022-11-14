@@ -34,16 +34,19 @@ router.get(
 
 router.post(
   '/reg',
+  [validates(RegisterValidtions)],
   wrap(async (req: Request, res: Response) => {
-    console.log(req.body)
+    console.log(req.body);
     const registerService: RegisterService = Container.get(RegisterService);
     const register: Register = await registerService.create({
       ...req.body,
     });
+    
     return res.status(201).json({
       message: 'Request Successful',
       data: register,
     });
+    
   }),
 );
 

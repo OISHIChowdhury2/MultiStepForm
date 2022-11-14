@@ -9,7 +9,6 @@ const FirstStep = ({ nextStep, setRegistration, registration }) => {
     firstName: Joi.string().min(4).max(20).required().label("FirstName"),
     lastName: Joi.string().min(4).max(20).required().label("LastName"),
   };
-
   // validation data
   const signUp = {
     firstName: registration.firstName,
@@ -18,14 +17,11 @@ const FirstStep = ({ nextStep, setRegistration, registration }) => {
 
   // handle Error
   const [errors, setErrors] = useState({});
-
   const validateLogin = () => {
     const { error } = Joi.validate(signUp, schema, { abortEarly: false });
     if (!error) return null;
-
     const dataError = {};
     for (let item of error.details) dataError[item.path[0]] = item.message;
-
     return dataError;
   };
 
@@ -50,17 +46,17 @@ const FirstStep = ({ nextStep, setRegistration, registration }) => {
     Data[input.name] = input.value;
     setRegistration(Data);
     setErrors(errorData);
-    // setRegistation({ ...signUp, [input.name]: input.value });
-    // setErrors({ ...errors, errors });
+ 
   };
 
-  const handleNext = () => {
+  const handleNext = (e) => {
     const errors = validateLogin();
     setErrors({ ...errors, errors: errors || {} });
     if (errors) return;
 
     console.log("data is working");
     nextStep();
+
   };
 
   return (

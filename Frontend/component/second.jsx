@@ -5,9 +5,6 @@ import formForAll from "../component/formForAll"
 
 const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
 
-
-
-  
    const schema = {
     email: Joi.string().required().email().label("Username"),                                      
     password: Joi.string().required().min(4).label("Password"),
@@ -105,13 +102,16 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
             onClick={handlePrevStep}
             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
           >
-            prev
+            Prev
           </button>
           <button
             onClick={secondNextStep}
             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-            next
+            Next
           </button>
+
+
+          
         </div>
       </form>
     </div>

@@ -2,10 +2,10 @@ import Input from "../pages/component/input";
 import { useState } from "react";
 import Joi from "joi-browser";
 import axios from "axios";
-import formForAll from "../component/formForAll"
+import formForAll from "./formForAll"
 
 //import all from  '../pages/userManagment/loginform'
-const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
+const thirtStep = ({ prevStep, setRegistration, registration }) => {
   console.log(registration);
   
    const schema = {                                     
@@ -55,16 +55,7 @@ const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
     // setErrors({ ...errors, errors });
   };
 
-  // const thirtNextStep = () => {
-  //   const errors = validateLogin();
-  //   setErrors({ ...errors, errors: errors || {} });
-  //   if (errors) return;
-
-
-  //   console.log("data is working");
-   
-  // };
-
+  
   const handlePrevStep = () => {
     prevStep();
   };
@@ -117,13 +108,12 @@ const thirtStep = ({ nextStep, prevStep, setRegistration, registration }) => {
         />
 
         <div className="space-x-4 mt-4">
-          <button
-           
-            className="w-[100px] bg-sky-300 text-white capitalize p-1 rounded-md hover:bg-sky-500"
+        <button
+            onClick={handlePrevStep}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
           >
-            log
+            prev
           </button>
-
           <button  onClick={register} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Button
 </button>
