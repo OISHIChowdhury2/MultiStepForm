@@ -4,7 +4,6 @@ import Joi from "joi-browser";
 import axios from "axios";
 import formForAll from "./formForAll";
 
-
 const thirtStep = ({nextStep, prevStep, setRegistration, registration }) => {
   console.log(registration);
   
@@ -17,19 +16,15 @@ const thirtStep = ({nextStep, prevStep, setRegistration, registration }) => {
   };
 
   const [errors, setErrors] = useState({});
-
   const validateLogin = () => {
     const { error } = Joi.validate(signUp3, schema, { abortEarly: false });
     if (!error) return null;
-
     const dataError = {};
     for (let item of error.details) dataError[item.path[0]] = item.message;
-
     return dataError;
   };
 
   const validateProperty = ({ name, value }) => {
-    //const { name, value } = event.target;
     const obj = { [name]: value };
     const subSchema = { [name]: schema[name] };
     const { error } = Joi.validate(obj, subSchema);
@@ -62,70 +57,53 @@ const thirtStep = ({nextStep, prevStep, setRegistration, registration }) => {
   if(email){
     axios.post("http://localhost:3030/api/v1/Register/reg", formData)
     .then( res=>
-  
-        window.location.href = '../userManagment/loginform'
-      );   
+        window.location.href = '../userManagment/loginform');   
     }
     else{
-  
- alert("reg fail")
+        alert("reg fail");
     }
   }
   return (
-
 <div>
-  <section class="bg-gray-50  dark:bg-gray-500">
+<section class="bg-gray-50 dark:bg-gray-500">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-  <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-white-900 md:text-2xl dark:text-white">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign up to your account
               </h1>
-              <form class="space-y-4 md:space-y-6" 
+              <form  class=" space-y-4 md:space-y-6 text-gray-50" 
         onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col  items-center justify-center shadow-md shadow-slate-300 w-[400px] h-[450px] border-t-4 border-sky-300"
       >
+        <div>
        <Input
           type="role"
-           onChange={handleChange}
+          onChange={handleChange}
           value={registration.role}
           placeholder="enter your Role"
           name="role"
           label="role"
           error={errors.role}
-        />
+       />
         <div className="space-x-4 mt-4">
           <button
-            onClick={handlePrevStep}
-            className="bg-gray-300 hover:bg-gray-400 text-white-500 font-bold py-2 px-4 rounded-r"
+          onClick={handlePrevStep}
+          className="bg-gray-300 hover:bg-gray-400 text-white-500 font-bold py-2 px-4 rounded-r"
           >
             Prev
           </button>
           <button
           onClick={register}
-            className="bg-gray-300 hover:bg-gray-400 text-white-800 font-bold py-2 px-4 rounded-r">
+          className="bg-gray-300 hover:bg-gray-400 text-white-800 font-bold py-2 px-4 rounded-r">
             Submit
           </button> 
-          </div>      
-          </form>
-          </div>
-      </div>
+        </div>   
+       </div>   
+     </form>
+    </div>
+   </div>
   </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ </section>
 </div>
   );
 };

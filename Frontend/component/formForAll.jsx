@@ -9,8 +9,7 @@ const useForm = (
   setErrors,
   doSubmit
 ) => {
-  // const [formData,setFormData] = useState(allData);
-  // const [errors,setErrors] = useState(errorData);
+  
 
   const validateLogin = () => {
     const { error } = Joi.validate(formData, schema, { abortEarly: false });
@@ -32,7 +31,6 @@ const useForm = (
   };
 
   const validateProperty = ({ name, value }) => {
-    //const { name, value } = event.target;
     const obj = { [name]: value };
     const subSchema = { [name]: schema[name] };
     const { error } = Joi.validate(obj, subSchema);
@@ -40,7 +38,6 @@ const useForm = (
   };
 
   const handleChange = ({ target: input }) => {
-    //const { name, value } = event.target;
     let errorData = { ...errors };
     const errorMessage = validateProperty(input);
     if (errorMessage) {
@@ -52,8 +49,7 @@ const useForm = (
     Data[input.name] = input.value;
     setFormData(Data);
     setErrors(errorData);
-    //setSignUp({...signUp,[input.name]: input.value});
-    //setErrors({...errors,errors})
+   
   };
 
   return { handleChange, handleSubmit };

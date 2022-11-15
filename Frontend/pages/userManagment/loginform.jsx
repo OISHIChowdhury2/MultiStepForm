@@ -16,7 +16,7 @@ export const loginform = () => {
      const [errors, setErrors] = useState({});
      const schema = {
        email: Joi.string().required().email({ minDomainAtoms: 2 }).label("Username"),
-       password: Joi.string().required().min(4).label("Password"),
+       password: Joi.string().required().min(4).regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,"o" ).label("Give a Strong Password"),
      };
    
      const validateForm = (e) => {

@@ -61,17 +61,15 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
 
   return (
     <div>
-<section class="bg-gray-50  dark:bg-gray-500">
+<section class="bg-gray-50 dark:bg-gray-500">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-  <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-white-900 md:text-2xl dark:text-white">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign up to your account
-              </h1>
-              <form class="  text-gray-50 space-y-4 md:space-y-6" 
-        onSubmit={(e) => e.preventDefault()}
-        className=" flex flex-col  items-center justify-center shadow-md shadow-slate-300 w-[400px] h-[450px] border-t-4 border-sky-300"
-      >
+            </h1>
+         <form class=" space-y-4 md:space-y-6 text-gray-50" action="#">
+            <div>
       <Input
           type="email"
           onChange={handleChange}
@@ -80,8 +78,8 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
           name="email"
           label="email"
           error={errors.email}
-        />
-     <Input
+      />
+      <Input
           type="password"
           onChange={handleChange}
           value={registration.password}
@@ -89,7 +87,7 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
           name="password"
           label="password"
           error={errors.password}
-        />
+      />
         <div className="space-x-4 mt-4">
           <button
             onClick={handlePrevStep}
@@ -102,12 +100,13 @@ const SecondStep = ({ nextStep, prevStep, setRegistration, registration}) => {
             className="bg-gray-300 hover:bg-gray-400 text-white-800 font-bold py-2 px-4 rounded-r">
             Next
           </button> 
-          </div>      
-          </form>
-          </div>
-      </div>
+       </div> 
+      </div>     
+     </form>
+    </div>
+   </div>
   </div>
-</section>
+ </section>
 </div>
   );
 };
