@@ -20,13 +20,12 @@ const signup = () => {
     
   };
 
-
   const handlePrevStep = () => {
     let prevStep = registration.step - 1;
     setRegistration({ ...registration, step: prevStep });
 
   };
-
+  
   switch (registration.step) {
     case 1:
       return (
@@ -34,7 +33,6 @@ const signup = () => {
           nextStep={handleNextStep}
           setRegistration={setRegistration}
           registration={registration}
-
         />
       );
     case 2:
@@ -44,8 +42,6 @@ const signup = () => {
           prevStep={handlePrevStep}
           setRegistration={setRegistration}
           registration={registration}
-
-
         />
       );
       case 3:
@@ -56,17 +52,12 @@ const signup = () => {
           prevStep={handlePrevStep}
           setRegistration={setRegistration}
           registration={registration}
-
-         
-  
           />
         );
-
         case 4:
           return (
             <loginform
-            values={registration} 
-       
+            values={"registration"} 
             />
           );
   }

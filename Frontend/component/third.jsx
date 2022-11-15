@@ -2,22 +2,20 @@ import Input from "../pages/component/input";
 import { useState } from "react";
 import Joi from "joi-browser";
 import axios from "axios";
-import formForAll from "./formForAll"
+import formForAll from "./formForAll";
 
-//import all from  '../pages/userManagment/loginform'
-const thirtStep = ({ prevStep, setRegistration, registration }) => {
+
+const thirtStep = ({nextStep, prevStep, setRegistration, registration }) => {
   console.log(registration);
   
    const schema = {                                     
     role: Joi.string().required().min(1).label("Role"),
   };
 
-  // // validation data
   const signUp3 = {
-    role: registration.role ,
+    role: registration.role,
   };
 
-  // handle Error
   const [errors, setErrors] = useState({});
 
   const validateLogin = () => {
@@ -51,78 +49,84 @@ const thirtStep = ({ prevStep, setRegistration, registration }) => {
     Data[input.name] = input.value;
     setRegistration(Data);
     setErrors(errorData);
-    // setRegistation({ ...signUp, [input.name]: input.value });
-    // setErrors({ ...errors, errors });
   };
 
-  
   const handlePrevStep = () => {
     prevStep();
   };
 
   const register = async () =>{
-    // const { firstName,lastName,email,password,role} = registration
     const formData = registration;
     delete formData.step;
-    // if(firstName && email && password && role){
-      try{
+    const {email} = formData;
+  if(email){
     axios.post("http://localhost:3030/api/v1/Register/reg", formData)
     .then( res=>
-        // console.log("register done")
-      {
-        const notify = () => toast("Wow so easy!");
-        return notify
-      }
-      );
-    // }
-    // else {
-    //   console.log("register fail");
-    // }
-      }
-      catch{
-
-    console.log("hi");
-      }
+  
+        window.location.href = '../userManagment/loginform'
+      );   
+    }
+    else{
+  
+ alert("reg fail")
+    }
   }
-
- 
   return (
-<div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
-    <div class="bg-white py-6 px-10 sm:max-w-md w-full ">
-        <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
-            Registration Form 
-        </div>
-        <div class="">
-            <div>
-      <form
+
+<div>
+  <section class="bg-gray-50  dark:bg-gray-500">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+  <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-white-900 md:text-2xl dark:text-white">
+                  Sign up to your account
+              </h1>
+              <form class="space-y-4 md:space-y-6" 
         onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col items-center justify-center shadow-md shadow-slate-300 w-[400px] h-[450px] border-t-4 border-sky-300"
+        className="flex flex-col  items-center justify-center shadow-md shadow-slate-300 w-[400px] h-[450px] border-t-4 border-sky-300"
       >
-        <Input
+       <Input
           type="role"
            onChange={handleChange}
           value={registration.role}
           placeholder="enter your Role"
           name="role"
           label="role"
+          error={errors.role}
         />
-
         <div className="space-x-4 mt-4">
-        <button
+          <button
             onClick={handlePrevStep}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+            className="bg-gray-300 hover:bg-gray-400 text-white-500 font-bold py-2 px-4 rounded-r"
           >
-            prev
+            Prev
           </button>
-          <button  onClick={register} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-  Button
-</button>
-        </div>
-      </form>
-    </div>
-    </div>
-    </div>
-    </div>
+          <button
+          onClick={register}
+            className="bg-gray-300 hover:bg-gray-400 text-white-800 font-bold py-2 px-4 rounded-r">
+            Submit
+          </button> 
+          </div>      
+          </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
   );
 };
 

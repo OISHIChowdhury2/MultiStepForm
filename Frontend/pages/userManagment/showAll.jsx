@@ -56,9 +56,14 @@ export default function showAll() {
 
   return (
     <div>
+       <section class="bg-gray-50 dark:bg-gray-500">
+       <a href="/userManagment/loginform" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">LogOut</a>
+       <div class="w-full  bg-white rounded-lg shadow dark:border md:mt-100 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="w-full p-6 space-y-4 md:space-y-6 sm:p-8">
       { showAlluser.map(all=>(
-<div class="min-h-fit bg-gray-100 inline-flex justify-center items-center shadow-lg shadow-red-500 md:shadow-xl md:shadow-red-500">
-  <div class="w- p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl hover:scale-99 transition-all transform duration-500">
+        <form class="space-y-4 md:space-y-6 ">
+ <div class="min-h-fit bg-gray-100 inline-flex justify-center items-center shadow-lg shadow-red-500 md:shadow-xl md:shadow-red-500"> 
+  <div class="w- p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl hover:scale-99 transition-all ">
     {/* <img class="w-64 object-cover rounded-t-md" src="https://images.unsplash.com/photo-1509223197845-458d87318791" alt="" /> */}
     <div class="mt-4">
       <h1 class="text-2xl font-bold text-gray-700">User Information</h1>
@@ -102,16 +107,20 @@ export default function showAll() {
   </div>
  
 </div>
-
+</form>
   )
       )}
      
   <div></div>
        <div class="shadow-lg shadow-black-100/1  md:shadow-xl shadow-cyan-500/50">
-       <button class="bg-indigo-500 shadow-lg absolute inset-y-4 right-0 w-26 h-16 shadow-indigo-500/50"><Link href="/about/viewcontact"><a > View All User FeedBack</a></Link></button>
+       {/* <button class="bg-indigo-500 shadow-lg absolute inset-y-4 right-0 w-26 h-16 shadow-indigo-500/50"><Link href="/about/viewcontact"><a > View All User FeedBack</a></Link></button> */}
        </div>
-    </div>
+      </div>
+      <a href="/about/viewcontact" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">View All Feedback</a>
+      </div>
+      </section>
 
+      </div>
   )
   
 }
