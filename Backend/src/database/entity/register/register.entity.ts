@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert } from 'typeorm';
-import bcrypt from 'bcryptjs';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+// import bcrypt from 'bcryptjs';
 
 @Entity('register')
 export default class Register {
@@ -7,36 +7,42 @@ export default class Register {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
-  firstName!: string;
+  @Column({ unique: true })
+  companyName!: string;
 
   @Column()
-  lastName!: string;
+  representativeName!: string;
 
   @Column({ unique: true })
-  email!: string;
-
-  @Column({ select: false })
-  password!: string;
+  representativeId!: string;
 
   @Column()
-  role!: string;
+  companyAddress!: string;
+
+  @Column({ unique: true })
+  companyEmail!: string;
+
+  @Column({ unique: true })
+  companyMobile!: number;
 
   @Column()
-  @CreateDateColumn({ type: 'date' })
-  createdAt!: Date;
+  ownerName!: string;
 
   @Column()
-  @UpdateDateColumn({ type: 'date' })
-  updatedAt!: Date;
-  toBe: any;
+  ownerContact!: number;
 
-  @BeforeInsert()
-  async hashPassword() {
-    if (this.password) {
-      this.password = await bcrypt.hash(this.password, 10);
-    }
-  }
+  @Column()
+  postalCode!: number;
+
+  @Column( {type: String})
+  tinCertificateImage!: string;
+
+  // @BeforeInsert()
+  // async hashPassword() {
+  //   if (this.password) {
+  //     this.password = await bcrypt.hash(this.password, 10);
+  //   }
+  // }
 
   // hashPassword() {
   //   this.password = bcrypt.hashSync(this.password, 8);

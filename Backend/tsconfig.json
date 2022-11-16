@@ -7,10 +7,8 @@
       "@config/*": ["config/*"],
       "@database/*": ["database/*"],
       "@role/*": ["role/*"],
-      "@log/*": ["log/*"],
-      "@register_login/*": ["register_login/*"],
-      "@contact/*": ["contact/*"],
-      "@search/*": ["search/*"]
+      "@user/*": ["user/*"],
+      "@register/*": ["register/*"],
     },
     "typeRoots": ["node", "express", "@types", "./node_modules/@types"],
     "types": ["jest"],
