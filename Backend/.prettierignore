@@ -1,9 +1,0 @@
-node_modules
-dist
-.vscode
-
-.eslintrc
-.prettierrc.js
-package.json
-README.md
-tsconfig.json
